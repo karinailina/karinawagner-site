@@ -52,6 +52,14 @@
   .link:hover { opacity: .55; gap: 12px; }
   section { position: relative; scroll-margin-top: 64px; }
 
+  .inline { color: var(--fg); border-bottom: 1px solid currentColor; transition: opacity .25s ease; }
+  .inline:hover { opacity: .55; }
+  .now { display: grid; grid-template-columns: auto auto 1fr; align-items: baseline; gap: 14px; margin-top: 28px; padding-top: 16px; border-top: 1px solid var(--line); max-width: 44ch; transition: opacity .25s ease; }
+  .now:hover { opacity: .6; }
+  .now-name { font-family: var(--display); font-size: 27px; letter-spacing: -.03em; line-height: 1; }
+  .now-what { font-size: 14px; color: var(--graphite); justify-self: end; }
+  @media (max-width: 480px) { .now { grid-template-columns: auto 1fr; } .now-what { grid-column: 1 / -1; justify-self: start; } }
+
   /* Nav */
   .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); transition: background-color .9s cubic-bezier(.4,0,.2,1); }
   .nav .wrap { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; height: 64px; }
@@ -259,7 +267,7 @@
       <p class="eyebrow"><b>Digital Product Development</b>&amp; Creative Technology Specialist</p>
       <h1 class="disp"><span class="line quiet"><span>Hello, I’m</span></span><span class="line"><span>Karina Wagner</span></span></h1>
       <div class="hero-foot">
-        <p>I turn ideas into apps people love to use, travel the world and write about fashion and beauty.</p>
+        <p>I turn ideas into apps people love to use, travel the world and write about fashion and beauty. Currently at <a class="inline" href="https://www.loaded.ch/" target="_blank" rel="noopener">loaded.</a>, a digital product studio in Zürich.</p>
         <nav aria-label="Quick links"><a class="link" href="#work">See my work ↓</a><a class="link" href="#social">Get in touch</a></nav>
       </div>
     </div>
@@ -311,6 +319,7 @@
           <p>I turn ideas into digital products — from the first sketch to an app people actually download, use, and love. I care about both sides of the process: the technology that makes it work and the design that makes it feel right.</p>
           <p>When I’m not building, I’m travelling. Along the way, I share my thoughts on fashion, beauty, and the experiences worth dressing up for.</p>
         </div>
+        <a class="now fade" href="https://www.loaded.ch/" target="_blank" rel="noopener"><span class="eyebrow">Currently</span><span class="now-name">loaded.</span><span class="now-what">Digital product studio, Zürich ↗</span></a>
       </div>
       <div class="vert" aria-hidden="true"><span>Karina Wagner</span><a href="https://www.instagram.com/_karina_wagner_/" target="_blank" rel="noopener" tabindex="-1">@_karina_wagner_</a></div>
     </div>
