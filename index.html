@@ -93,7 +93,7 @@
   .hero-foot p { margin: 0; max-width: 36ch; font-size: 16px; color: var(--graphite); }
   .hero-foot nav { display: flex; gap: 28px; }
   .media { margin-top: clamp(64px, 8vw, 100px); height: clamp(420px, 78vh, 820px); position: relative; overflow: hidden; background: var(--ink); clip-path: inset(0 var(--inset, 6%) round 4px); will-change: clip-path; }
-  .media img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; object-position: 50% 22%; transform: translateY(var(--py, 0px)) scale(var(--ps, 1.08)); will-change: transform; }
+  .media img { position: absolute; inset: -8% 0; width: 100%; height: 116%; object-fit: cover; object-position: 50% 6%; transform: translateY(var(--py, 0px)) scale(var(--ps, 1.08)); will-change: transform; }
   .media figcaption { position: absolute; left: var(--gutter); bottom: 20px; color: var(--paper); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; opacity: .8; }
   .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; padding-block: clamp(64px, 8vw, 100px) 0; }
   .fact { border-top: 1px solid var(--line); padding-top: 22px; text-align: center; transition: border-color .9s ease; }
@@ -168,20 +168,21 @@
 
   .about-text .intro p { font-size: 17px; line-height: 1.55; text-align: left; }
   .about-more { padding-block: clamp(64px, 8vw, 120px) clamp(100px, 11vw, 160px); }
-  .chapters { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(48px, 6vw, 88px) clamp(32px, 5vw, 80px); border-top: 1px solid var(--line); padding-top: clamp(40px, 5vw, 64px); }
-  .chapter h3 { margin: 0 0 18px; font-family: var(--display); font-weight: 400; font-size: var(--t-sub); line-height: 1.1; letter-spacing: -.02em; }
-  .chapter p { margin: 0 0 1em; max-width: 58ch; color: #2b2b2b; line-height: 1.6; }
-  .chapter.wide { grid-column: 1 / -1; }
-  .chapter.wide > div, .chapter.wide { columns: 2; column-gap: clamp(32px, 5vw, 80px); }
-  .chapter.wide h3 { column-span: all; }
-  .chapter.wide p { break-inside: avoid; }
+  .zig { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 6vw, 96px); align-items: center; padding-block: clamp(48px, 6vw, 88px); border-top: 1px solid var(--line); }
+  .zig.left .zig-photo { order: -1; }
+  .zig-photo { margin: 0; border-radius: 4px; overflow: hidden; background: var(--fog); }
+  .zig-photo img { width: 100%; height: auto; max-height: 86vh; object-fit: cover; object-position: 50% 20%; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+  .zig-photo:hover img { transform: scale(1.02); }
+  .zig-text { display: grid; gap: clamp(32px, 4vw, 52px); }
+  .chapter h3 { margin: 0 0 16px; font-family: var(--display); font-weight: 400; font-size: var(--t-sub); line-height: 1.1; letter-spacing: -.02em; }
+  .chapter p { margin: 0 0 .9em; max-width: 52ch; color: #2A2526; line-height: 1.6; text-align: justify; hyphens: auto; }
+  @media (max-width: 860px) {
+    .zig { grid-template-columns: 1fr; }
+    .zig .zig-photo { order: -1; max-width: 520px; }
+  }
   .closing { margin-top: clamp(72px, 9vw, 128px); padding-top: clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
   .closing .disp { font-size: var(--t-h); line-height: 1.02; letter-spacing: -.035em; max-width: 22ch; }
   .closing-sub { margin: clamp(24px, 3vw, 36px) 0 0; font-family: var(--display); font-style: italic; font-size: var(--t-sub); line-height: 1.35; color: var(--graphite); max-width: 40ch; }
-  @media (max-width: 860px) {
-    .chapters { grid-template-columns: 1fr; }
-    .chapter.wide { columns: 1; }
-  }
 
   /* Travel — full-bleed ink */
   .t-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto; gap: clamp(24px, 4vw, 64px); align-items: end; }
@@ -287,7 +288,7 @@
         <nav aria-label="Quick links"><a class="link" href="#work">See my work ↓</a><a class="link" href="#social">Get in touch</a></nav>
       </div>
     </div>
-    <figure class="media" id="media" style="margin-bottom:0"><img src="img/karina-portrait.webp" alt="Karina Wagner, black and white portrait" fetchpriority="high"><figcaption>Based in Switzerland</figcaption></figure>
+    <figure class="media" id="media" style="margin-bottom:0"><img src="img/hero-bw.webp" alt="Karina Wagner, black and white editorial portrait" fetchpriority="high"><figcaption>Based in Switzerland</figcaption></figure>
     <div class="wrap">
       <div class="facts">
         <div class="fact fade"><strong>4</strong><span>Apps launched</span></div>
@@ -335,12 +336,17 @@
       <div class="vert" aria-hidden="true"><span>Karina Wagner</span><a href="https://www.instagram.com/_karina_wagner_/" target="_blank" rel="noopener" tabindex="-1">@_karina_wagner_</a></div>
     </div>
     <div class="wrap about-more">
-    <div class="chapters">
-        <article class="chapter fade"><h3>Education &amp; Law</h3><p>My academic background is in law. I hold a Bachelor’s degree in General Jurisprudence and a Master’s degree specializing in Public International Law and Private International Law within the framework of international integration.</p><p>My education has shaped the way I approach complex ideas, think critically, and understand the world.</p></article>
-        <article class="chapter fade"><h3>Technology &amp; the Future</h3><p>I’m passionate about technology and fascinated by how rapidly our world is evolving. I feel incredibly lucky to have grown up during such a remarkable period of transformation — from landline telephones and button phones to artificial intelligence, self-driving cars, and technologies that once seemed like science fiction.</p><p>Having witnessed this evolution firsthand, I love exploring new technologies, staying ahead of the curve, and discovering how innovation can reshape the way we live, work, and experience the world.</p><p>For me, curiosity and embracing what’s next are simply part of who I am.</p></article>
-        <article class="chapter fade"><h3>Sport &amp; Wellbeing</h3><p>Sport has been part of my life since childhood. I began artistic gymnastics at five and ballroom dancing at seven, dedicating the next ten years to competitive dance and participating in international competitions. These early experiences shaped my discipline, determination, and appreciation for an active lifestyle.</p><p>Today, fitness is an essential part of my everyday life. Through strength training, mindful nutrition, and a constant desire to improve, I’m passionate about exploring the relationship between health, performance, and well-being.</p><p>I’m particularly fascinated by longevity, neuroscience, and biohacking. I enjoy exploring new approaches to health and performance, including peptides, supplements, and emerging longevity therapies. I’m always curious to learn more about how the human body and brain work, experiment with new approaches, and discover ways to support health, recovery, and healthy aging.</p></article>
-        <article class="chapter fade"><h3>Psychology, Fashion &amp; Culture</h3><p>Psychology, fashion, and human behavior are among my greatest interests. I love exploring the world of psychology through books, from Freud’s collected works to the writings of Oliver Sacks and Norman Doidge.</p><p>I’m especially fascinated by the brain, human consciousness, and the extraordinary complexity of the mind.</p><p>Fashion and beauty are another expression of my creativity and appreciation for aesthetics. Through my Telegram channel, I share my thoughts on fashion, personal style, and the things that inspire me.</p></article>
-        <article class="chapter wide fade"><h3>Travel &amp; Adventure</h3><p>Travel is one of my greatest passions. Having visited more than 40 countries, I’m always drawn to places I’ve never been, cultures I haven’t experienced, and destinations that offer something entirely new.</p><p>My husband and I love exploring the world together, discovering unfamiliar cities, trying new restaurants, and immersing ourselves in different ways of life. I’m happiest when I have something new to look forward to — whether it’s a country, a hidden restaurant, a remote landscape, or an entirely unfamiliar experience.</p><p>One of my personal goals is to visit every country in the world before turning 30.</p><p>Adventure has also taken me beyond traditional travel. I spent nine days trekking to Everest Base Camp, an experience that made reaching the summit of Mount Everest one of my biggest dreams.</p><p>Before that, I have several mountains on my list: Mount Elbrus, Kilimanjaro, and Mont Blanc.</p><p>Another dream is to complete a four-day expedition through Son Doong Cave in Vietnam, the world’s largest known cave.</p><p>For me, travel is about more than seeing new places. It’s about constantly discovering, challenging myself, and experiencing as much of the world as possible.</p></article>
+    <div class="zig right fade">
+      <div class="zig-text"><article class="chapter"><h3>Education &amp; Law</h3><p>My academic background is in law. I hold a Bachelor’s degree in General Jurisprudence and a Master’s degree specializing in Public International Law and Private International Law within the framework of international integration.</p><p>My education has shaped the way I approach complex ideas, think critically, and understand the world.</p></article><article class="chapter"><h3>Technology &amp; the Future</h3><p>I’m passionate about technology and fascinated by how rapidly our world is evolving. I feel incredibly lucky to have grown up during such a remarkable period of transformation — from landline telephones and button phones to artificial intelligence, self-driving cars, and technologies that once seemed like science fiction.</p><p>Having witnessed this evolution firsthand, I love exploring new technologies, staying ahead of the curve, and discovering how innovation can reshape the way we live, work, and experience the world.</p><p>For me, curiosity and embracing what’s next are simply part of who I am.</p></article></div>
+      <figure class="zig-photo"><img src="img/laugh-bw.webp" alt="Karina Wagner laughing, black and white studio portrait" loading="lazy"></figure>
+    </div>
+    <div class="zig left fade">
+      <figure class="zig-photo"><img src="img/window-bw.webp" alt="Karina Wagner, black and white portrait by a window" loading="lazy"></figure>
+      <div class="zig-text"><article class="chapter"><h3>Sport &amp; Wellbeing</h3><p>Sport has been part of my life since childhood. I began artistic gymnastics at five and ballroom dancing at seven, dedicating the next ten years to competitive dance and participating in international competitions. These early experiences shaped my discipline, determination, and appreciation for an active lifestyle.</p><p>Today, fitness is an essential part of my everyday life. Through strength training, mindful nutrition, and a constant desire to improve, I’m passionate about exploring the relationship between health, performance, and well-being.</p><p>I’m particularly fascinated by longevity, neuroscience, and biohacking. I enjoy exploring new approaches to health and performance, including peptides, supplements, and emerging longevity therapies. I’m always curious to learn more about how the human body and brain work, experiment with new approaches, and discover ways to support health, recovery, and healthy aging.</p></article><article class="chapter"><h3>Psychology, Fashion &amp; Culture</h3><p>Psychology, fashion, and human behavior are among my greatest interests. I love exploring the world of psychology through books, from Freud’s collected works to the writings of Oliver Sacks and Norman Doidge.</p><p>I’m especially fascinated by the brain, human consciousness, and the extraordinary complexity of the mind.</p><p>Fashion and beauty are another expression of my creativity and appreciation for aesthetics. Through my Telegram channel, I share my thoughts on fashion, personal style, and the things that inspire me.</p></article></div>
+    </div>
+    <div class="zig right fade">
+      <div class="zig-text"><article class="chapter"><h3>Travel &amp; Adventure</h3><p>Travel is one of my greatest passions. Having visited more than 40 countries, I’m always drawn to places I’ve never been, cultures I haven’t experienced, and destinations that offer something entirely new.</p><p>My husband and I love exploring the world together, discovering unfamiliar cities, trying new restaurants, and immersing ourselves in different ways of life. I’m happiest when I have something new to look forward to — whether it’s a country, a hidden restaurant, a remote landscape, or an entirely unfamiliar experience.</p><p>One of my personal goals is to visit every country in the world before turning 30.</p><p>Adventure has also taken me beyond traditional travel. I spent nine days trekking to Everest Base Camp, an experience that made reaching the summit of Mount Everest one of my biggest dreams.</p><p>Before that, I have several mountains on my list: Mount Elbrus, Kilimanjaro, and Mont Blanc.</p><p>Another dream is to complete a four-day expedition through Son Doong Cave in Vietnam, the world’s largest known cave.</p><p>For me, travel is about more than seeing new places. It’s about constantly discovering, challenging myself, and experiencing as much of the world as possible.</p></article></div>
+      <figure class="zig-photo"><img src="img/beauty-bw.webp" alt="Karina Wagner, black and white beauty portrait" loading="lazy"></figure>
     </div>
     <div class="closing">
       <p class="disp fade">I believe life is an ongoing journey of discovery — a balance between ambition and curiosity, discipline and freedom, personal growth and the simple pleasure of experiencing the world.</p>
