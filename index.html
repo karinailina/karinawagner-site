@@ -172,6 +172,8 @@
   .zig.left .zig-photo { order: -1; }
   .zig-photo { margin: 0; border-radius: 4px; overflow: hidden; background: var(--fog); }
   .zig-photo img { width: 100%; height: auto; max-height: 86vh; object-fit: cover; object-position: 50% 20%; transition: transform 1.2s cubic-bezier(.2,.8,.2,1); }
+  .zig-photo.cut { background: none; border-radius: 0; }
+  .zig-photo.cut img { max-height: none; object-fit: contain; }
   .zig-photo:hover img { transform: scale(1.02); }
   .zig-text { display: grid; gap: clamp(32px, 4vw, 52px); }
   .chapter h3 { margin: 0 0 16px; font-family: var(--display); font-weight: 400; font-size: var(--t-sub); line-height: 1.1; letter-spacing: -.02em; }
@@ -244,7 +246,8 @@
   .s-title em { font-style: italic; color: var(--muted); transition: color .9s ease; }
   .s-sub { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: end; margin-top: clamp(32px, 4vw, 52px); }
   .s-sub p { margin: 0; font-family: var(--display); font-size: var(--t-sub); line-height: 1.3; letter-spacing: -.01em; max-width: 30ch; }
-  .s-list { list-style: none; margin: clamp(64px, 8vw, 108px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .s-list { list-style: none; margin: clamp(64px, 8vw, 108px) 0 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 24px; }
+  @media (max-width: 1100px) { .s-list { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 48px; } }
   .s-list a { display: grid; gap: 14px; padding: 22px 0 0; border-top: 1px solid var(--fg); transition: opacity .25s ease; }
   .s-list:hover a { opacity: .45; }
   .s-list a:hover, .s-list a:focus-visible { opacity: 1; }
@@ -338,10 +341,10 @@
     <div class="wrap about-more">
     <div class="zig right fade">
       <div class="zig-text"><article class="chapter"><h3>Education &amp; Law</h3><p>My academic background is in law. I hold a Bachelor’s degree in General Jurisprudence and a Master’s degree specializing in Public International Law and Private International Law within the framework of international integration.</p><p>My education has shaped the way I approach complex ideas, think critically, and understand the world.</p></article><article class="chapter"><h3>Technology &amp; the Future</h3><p>I’m passionate about technology and fascinated by how rapidly our world is evolving. I feel incredibly lucky to have grown up during such a remarkable period of transformation — from landline telephones and button phones to artificial intelligence, self-driving cars, and technologies that once seemed like science fiction.</p><p>Having witnessed this evolution firsthand, I love exploring new technologies, staying ahead of the curve, and discovering how innovation can reshape the way we live, work, and experience the world.</p><p>For me, curiosity and embracing what’s next are simply part of who I am.</p></article></div>
-      <figure class="zig-photo"><img src="img/laugh-bw.webp" alt="Karina Wagner laughing, black and white studio portrait" loading="lazy"></figure>
+      <figure class="zig-photo"><img src="img/skirt-bw.webp" alt="Karina Wagner in a black silk shirt and leather skirt, black and white" loading="lazy"></figure>
     </div>
     <div class="zig left fade">
-      <figure class="zig-photo"><img src="img/hero-bw.webp" alt="Karina Wagner, black and white editorial portrait" loading="lazy"></figure>
+      <figure class="zig-photo cut"><img src="img/sit-cut.webp" alt="Karina Wagner sitting and laughing, black and white" loading="lazy"></figure>
       <div class="zig-text"><article class="chapter"><h3>Sport &amp; Wellbeing</h3><p>Sport has been part of my life since childhood. I began artistic gymnastics at five and ballroom dancing at seven, dedicating the next ten years to competitive dance and participating in international competitions. These early experiences shaped my discipline, determination, and appreciation for an active lifestyle.</p><p>Today, fitness is an essential part of my everyday life. Through strength training, mindful nutrition, and a constant desire to improve, I’m passionate about exploring the relationship between health, performance, and well-being.</p><p>I’m particularly fascinated by longevity, neuroscience, and biohacking. I enjoy exploring new approaches to health and performance, including peptides, supplements, and emerging longevity therapies. I’m always curious to learn more about how the human body and brain work, experiment with new approaches, and discover ways to support health, recovery, and healthy aging.</p></article><article class="chapter"><h3>Psychology, Fashion &amp; Culture</h3><p>Psychology, fashion, and human behavior are among my greatest interests. I love exploring the world of psychology through books, from Freud’s collected works to the writings of Oliver Sacks and Norman Doidge.</p><p>I’m especially fascinated by the brain, human consciousness, and the extraordinary complexity of the mind.</p><p>Fashion and beauty are another expression of my creativity and appreciation for aesthetics. Through my Telegram channel, I share my thoughts on fashion, personal style, and the things that inspire me.</p></article></div>
     </div>
     <div class="zig right fade">
@@ -394,6 +397,7 @@
         <li class="fade"><a href="https://www.instagram.com/_karina_wagner_/" target="_blank" rel="noopener"><span class="top">01 — Instagram<i aria-hidden="true">↗</i></span><b>Instagram</b><span class="h">@_karina_wagner_</span><span class="d">My life, travel, fashion, beauty and daily inspiration.</span></a></li>
         <li class="fade"><a href="https://www.threads.com/@_karina_wagner_" target="_blank" rel="noopener"><span class="top">02 — Threads<i aria-hidden="true">↗</i></span><b>Threads</b><span class="h">@_karina_wagner_</span><span class="d">Thoughts, updates and more personal content.</span></a></li>
         <li class="fade"><a href="https://t.me/karina_wagnerr" target="_blank" rel="noopener"><span class="top">03 — Telegram<i aria-hidden="true">↗</i></span><b>Telegram</b><span class="h">@karina_wagnerr</span><span class="d">Fashion, beauty &amp; events.</span></a></li>
+        <li class="fade"><a href="https://www.loaded.ch/" target="_blank" rel="noopener"><span class="top">04 — Work with us<i aria-hidden="true">↗</i></span><b>Loaded</b><span class="h">loaded.ch</span><span class="d">Order a logo, design concept, website, app or game from our studio.</span></a></li>
       </ul>
     </div>
   </section>
