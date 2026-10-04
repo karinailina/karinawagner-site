@@ -107,47 +107,33 @@
   .shead p { margin: 0 0 6px; max-width: 32ch; color: var(--graphite); }
   body[data-tone="ink"] .shead p { color: var(--muted); }
 
-  /* Work — pinned stage, one phone, four apps */
-  .showcase { position: relative; height: calc(4 * 90svh + 100svh); }
-  .stage {
-    position: sticky; top: 72px; height: calc(100svh - 88px); min-height: 560px; width: min(100% - 2 * var(--gutter), var(--max) - 2 * var(--gutter)); margin: 0 auto;
-    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); grid-template-rows: minmax(0, 1fr) auto;
-    border-radius: 4px; background: var(--paper); overflow: hidden; transition: background-color .7s ease, color .7s ease;
-  }
-  .stage.dark { background: var(--ink); color: var(--paper); }
-  .slides { position: relative; grid-column: 1; grid-row: 1; }
-  .slide { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; padding: clamp(28px, 5vw, 72px); opacity: 0; transform: translateY(28px); pointer-events: none; transition: opacity .6s ease, transform .8s cubic-bezier(.2,.8,.2,1); }
-  .slide.on { opacity: 1; transform: none; pointer-events: auto; transition-delay: .1s; }
-  .slide .no { font-size: 12px; letter-spacing: .06em; color: var(--stone); font-variant-numeric: tabular-nums; }
-  .slide h3 { margin: 18px 0 14px; font-family: var(--display); font-weight: 400; font-size: var(--t-lg); line-height: .8; letter-spacing: -.045em; }
-  .slide .cat { font-size: 16px; color: var(--stone); }
-  .slide p { margin: 22px 0 30px; max-width: 36ch; font-size: 16px; line-height: 1.5; color: var(--graphite); }
-  .stage.dark .slide p { color: #b9b9be; }
-  .slide .link { align-self: flex-start; }
-  .phone-wrap { grid-column: 2; grid-row: 1; display: grid; place-items: center; perspective: 1400px; padding-block: 28px; }
-  .phone { position: relative; height: min(80%, 640px); aspect-ratio: 9 / 19.5; max-width: 100%; border-radius: clamp(30px, 3.4vw, 46px); background: #0E0C0D; padding: clamp(7px, .7vw, 10px); transform: rotateY(var(--ry, 0deg)) rotateX(var(--rx, 0deg)) translateY(var(--ty, 0px)); transition: transform .2s linear; }
-  .stage.dark .phone { box-shadow: 0 0 0 1px rgba(255,255,255,.16); }
-  .screens { position: relative; width: 100%; height: 100%; border-radius: clamp(24px, 2.8vw, 37px); overflow: hidden; background: #fff; }
-  .screen { position: absolute; inset: 0; opacity: 0; transform: scale(1.06); transition: opacity .7s ease, transform 1s cubic-bezier(.2,.8,.2,1); }
-  .screen.on { opacity: 1; transform: none; }
-  .screen img { width: 100%; height: 100%; object-fit: cover; object-position: top; }
-  .screen.icon { background: #0B0F1C; display: grid; place-items: center; }
-  .screen.icon img { width: 52%; height: auto; border-radius: 22.5%; }
-  .tabs { grid-column: 1 / -1; grid-row: 2; display: flex; gap: clamp(14px, 3vw, 40px); padding: 0 clamp(28px, 5vw, 72px) 22px; overflow-x: auto; scrollbar-width: none; }
-  .tabs button { all: unset; cursor: pointer; position: relative; padding-top: 14px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; white-space: nowrap; opacity: .45; transition: opacity .3s ease; }
-  .tabs button::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: currentColor; opacity: .25; }
-  .tabs button::after { content: ""; position: absolute; left: 0; top: 0; height: 1px; width: calc(var(--fill, 0) * 100%); background: currentColor; }
-  .tabs button.on { opacity: 1; }
+  /* Work — loaded.ch-style cover flow of browser windows */
+  .flow { position: relative; height: calc(4 * 70svh + 100svh); }
+  .flow-stage { position: sticky; top: 72px; height: calc(100svh - 88px); min-height: 560px; display: grid; grid-template-rows: minmax(0, 1fr) auto; overflow: hidden; }
+  .deck { position: relative; perspective: 1800px; }
+  .card { position: absolute; left: 50%; top: 50%; width: min(60vw, 820px, calc((100svh - 330px) * 1.5)); aspect-ratio: 16 / 10.6; margin: 0; border-radius: 10px; overflow: hidden; background: #141416; box-shadow: 0 0 0 1px rgba(255,255,255,.12), 0 40px 90px -30px rgba(0,0,0,.9); transform: translate(-50%, -50%); will-change: transform, opacity; transition: box-shadow .4s ease; }
+  .card .bar { display: flex; align-items: center; gap: 6px; height: 34px; padding: 0 12px; background: #1c1c1f; border-bottom: 1px solid rgba(255,255,255,.08); }
+  .card .bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a3a3f; }
+  .card .bar span { margin-left: 10px; flex: 1; max-width: 46%; padding: 4px 12px; border-radius: 4px; background: #111113; font-size: 11.5px; letter-spacing: .02em; color: #a2a2a9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card img { display: block; width: 100%; height: calc(100% - 34px); object-fit: cover; object-position: top; }
+  .card.on { box-shadow: 0 0 0 1px rgba(255,255,255,.22), 0 50px 110px -30px rgba(0,0,0,.95); }
+  .caps { position: relative; height: 150px; text-align: center; }
+  .cap { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0; transform: translateY(14px); pointer-events: none; transition: opacity .5s ease, transform .6s cubic-bezier(.2,.8,.2,1); }
+  .cap.on { opacity: 1; transform: none; pointer-events: auto; }
+  .cap .cat { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
+  .cap h3 { margin: 0; max-width: 30ch; font-family: var(--display); font-weight: 400; font-size: clamp(22px, 2.3vw, 32px); line-height: 1.15; letter-spacing: -.02em; }
+  .cap .link { font-size: 14px; }
+  .flow-foot { display: flex; align-items: center; justify-content: center; gap: 18px; padding-bottom: 18px; font-size: 12px; letter-spacing: .06em; color: var(--stone); font-variant-numeric: tabular-nums; }
+  .flow-foot .track { position: relative; display: block; flex: none; width: min(220px, 40vw); height: 1px; background: rgba(255,255,255,.18); }
+  .flow-foot .track b { position: absolute; left: 0; top: 0; bottom: 0; width: calc(var(--p, 0) * 100%); background: var(--paper); }
   @media (max-width: 860px) {
-    .showcase { height: calc(4 * 85svh + 100svh); }
-    .stage { top: 68px; height: calc(100svh - 80px); min-height: 0; grid-template-columns: 1fr; grid-template-rows: auto minmax(0, .95fr) minmax(0, 1.05fr); }
-    .tabs { grid-row: 1; padding: 16px 22px 0; }
-    .phone-wrap { grid-column: 1; grid-row: 2; padding-block: 14px 0; }
-    .phone { height: 94%; }
-    .slides { grid-column: 1; grid-row: 3; }
-    .slide { justify-content: flex-start; padding: 16px 22px 0; }
-    .slide h3 { font-size: clamp(40px, 11vw, 60px); margin: 8px 0 8px; }
-    .slide p { margin: 12px 0 16px; font-size: 14.5px; }
+    .flow { height: calc(4 * 60svh + 100svh); }
+    .flow-stage { top: 68px; height: calc(100svh - 80px); min-height: 0; grid-template-rows: auto auto; align-content: center; gap: 28px; }
+    .deck { height: calc(84vw * .67 + 40px); }
+    .card { width: 84vw; border-radius: 8px; }
+    .card .bar { height: 26px; } .card .bar i { width: 7px; height: 7px; } .card .bar span { font-size: 10px; padding: 2px 8px; max-width: 60%; }
+    .card img { height: calc(100% - 26px); }
+    .caps { height: 170px; } .cap { inset: 0 22px; }
   }
 
   /* About — studio layout */
@@ -306,28 +292,30 @@
   </section>
 
   <!-- Work -->
-  <section class="block" id="work" data-tone="fog" aria-labelledby="work-title" style="padding-bottom:0">
+  <section class="block" id="work" data-tone="ink" aria-labelledby="work-title" style="padding-bottom:0">
     <div class="wrap">
       <div class="shead">
         <h2 class="disp" id="work-title"><span class="line"><span>Selected work</span></span><span class="line quiet"><span>from sketch to App Store</span></span></h2>
         <p class="fade">Products for couples, travellers, skincare lovers and anyone curious about their birth chart.</p>
       </div>
     </div>
-    <div class="showcase" id="showcase">
-      <div class="stage" id="stage">
-        <div class="slides">
-          <div class="slide on" data-dark="0"><span class="no">01 / 04</span><h3>Dream Now</h3><span class="cat">— iPhone — On the App Store</span><p>A wishlist you share with your partner, family and friends. They reserve a wish and give it, without spoiling the surprise.</p><a class="link" href="https://apps.apple.com/app/dream-now/id6807537489" target="_blank" rel="noopener">Download ↗</a></div>
-          <div class="slide" data-dark="0"><span class="no">02 / 04</span><h3>far</h3><span class="cat">— iPhone — On the App Store</span><p>Reads the photos already on your iPhone and turns them into a map of every country you've been to.</p><a class="link" href="https://apps.apple.com/app/id6806798162" target="_blank" rel="noopener">Download ↗</a></div>
-          <div class="slide" data-dark="0"><span class="no">03 / 04</span><h3>SkinFormula</h3><span class="cat">— iPhone — Coming soon</span><p>A skin routine built from your answers and a scan, with every claim graded by the evidence behind it.</p><a class="link" href="https://skinformula.app" target="_blank" rel="noopener">Discover ↗</a></div>
-          <div class="slide" data-dark="1"><span class="no">04 / 04</span><h3>Birth Code</h3><span class="cat">— iPhone — Coming soon</span><p>Your personal code from the moment you were born: astrology, numerology, the meaning of your name and more.</p><a class="link" href="https://getbirthcode.app" target="_blank" rel="noopener">Discover ↗</a></div>
+    <div class="flow" id="flow">
+      <div class="flow-stage" id="flowStage">
+        <div class="deck" id="deck">
+          <a class="card" href="https://apps.apple.com/app/dream-now/id6807537489" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><div class="bar"><i></i><i></i><i></i><span>dreamnow.app</span></div><img src="img/sites/dreamnow.webp" alt="dreamnow.app website" loading="lazy"></a>
+          <a class="card" href="https://apps.apple.com/app/id6806798162" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><div class="bar"><i></i><i></i><i></i><span>gofarapp.com</span></div><img src="img/sites/far.webp" alt="gofarapp.com website" loading="lazy"></a>
+          <a class="card" href="https://skinformula.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><div class="bar"><i></i><i></i><i></i><span>skinformula.app</span></div><img src="img/sites/skinformula.webp" alt="skinformula.app website" loading="lazy"></a>
+          <a class="card" href="https://getbirthcode.app" target="_blank" rel="noopener" tabindex="-1" aria-hidden="true"><div class="bar"><i></i><i></i><i></i><span>getbirthcode.app</span></div><img src="img/sites/birthcode.webp" alt="getbirthcode.app website" loading="lazy"></a>
         </div>
-        <div class="phone-wrap" aria-hidden="true"><div class="phone" id="phone"><div class="screens">
-          <div class="screen on"><img src="img/dreamnow-home.png" alt="Dream Now home screen" loading="lazy"></div>
-          <div class="screen"><img src="img/far-home.webp" alt="far home screen with a travel globe" loading="lazy"></div>
-          <div class="screen"><img src="img/skin-today.jpg" alt="SkinFormula product check screen" loading="lazy"></div>
-          <div class="screen icon"><img src="img/birthcode-icon.png" alt="Birth Code app icon" loading="lazy"></div>
-        </div></div></div>
-        <div class="tabs" role="tablist" aria-label="Apps"><button type="button" class="on" data-i="0">Dream Now</button><button type="button" class="" data-i="1">far</button><button type="button" class="" data-i="2">SkinFormula</button><button type="button" class="" data-i="3">Birth Code</button></div>
+        <div>
+          <div class="caps">
+          <div class="cap"><span class="cat">iPhone app · On the App Store</span><h3>Dream Now — a wishlist you share, so nobody has to guess again</h3><a class="link" href="https://apps.apple.com/app/dream-now/id6807537489" target="_blank" rel="noopener">Download ↗</a></div>
+          <div class="cap"><span class="cat">iPhone app · On the App Store</span><h3>far — your photos turned into a map of every country you’ve been to</h3><a class="link" href="https://apps.apple.com/app/id6806798162" target="_blank" rel="noopener">Download ↗</a></div>
+          <div class="cap"><span class="cat">iPhone app · Coming soon</span><h3>SkinFormula — a skin plan that recommends less, not more</h3><a class="link" href="https://skinformula.app" target="_blank" rel="noopener">Visit website ↗</a></div>
+          <div class="cap"><span class="cat">iPhone app · Coming soon</span><h3>Birth Code — astrology, numerology and the meaning of your name in one app</h3><a class="link" href="https://getbirthcode.app" target="_blank" rel="noopener">Visit website ↗</a></div>
+          </div>
+          <div class="flow-foot"><span id="flowNo">01</span><span class="track"><b></b></span><span>04</span></div>
+        </div>
       </div>
     </div>
   </section>
@@ -451,32 +439,36 @@
     addEventListener('resize', u); u();
   })();
 
-  /* Work stage */
+  /* Work cover flow */
   (() => {
-    const sc = document.getElementById('showcase'), stage = document.getElementById('stage'), phone = document.getElementById('phone');
-    const slides = [...stage.querySelectorAll('.slide')], screens = [...stage.querySelectorAll('.screen')], tabs = [...stage.querySelectorAll('.tabs button')];
-    const n = slides.length; let cur = -1;
+    const flow = document.getElementById('flow'), stage = document.getElementById('flowStage');
+    const cards = [...flow.querySelectorAll('.card')], caps = [...flow.querySelectorAll('.cap')], no = document.getElementById('flowNo'), track = flow.querySelector('.track');
+    const n = cards.length; let cur = -1;
     function update() {
-      const r = sc.getBoundingClientRect(), total = sc.offsetHeight - stage.offsetHeight, top = parseFloat(getComputedStyle(stage).top) || 0;
-      const p = Math.min(1, Math.max(0, (top - r.top) / total));
-      const pos = Math.min(n - .0001, p * n), i = Math.floor(pos), local = pos - i;
+      const r = flow.getBoundingClientRect(), total = flow.offsetHeight - stage.offsetHeight, top = parseFloat(getComputedStyle(stage).top) || 0;
+      const p = Math.min(1, Math.max(0, (top - r.top) / total)), f = p * (n - 1), mob = innerWidth < 860;
+      cards.forEach((c, i) => {
+        const d = i - f, a = Math.abs(d);
+        const x = d * (mob ? 74 : 64), z = -a * (mob ? 160 : 240), ry = reduceMotion ? 0 : Math.max(-1, Math.min(1, d)) * -22, sc = 1 - Math.min(a, 1.5) * .12;
+        c.style.transform = `translate(-50%, -50%) translateX(${x}%) translateZ(${z}px) rotateY(${ry}deg) scale(${sc})`;
+        c.style.opacity = a > 2.4 ? 0 : 1 - Math.max(0, a - 1.4) * 1;
+        c.style.filter = `brightness(${(1 - Math.min(a, 1.5) * .42).toFixed(3)})`;
+        c.style.zIndex = 10 - Math.round(a * 2);
+      });
+      const i = Math.round(f);
       if (i !== cur) {
         cur = i;
-        slides.forEach((el, k) => el.classList.toggle('on', k === i));
-        screens.forEach((el, k) => el.classList.toggle('on', k === i));
-        tabs.forEach((el, k) => { el.classList.toggle('on', k === i); el.setAttribute('aria-selected', k === i); });
-        stage.classList.toggle('dark', slides[i].dataset.dark === '1');
+        cards.forEach((c, k) => { c.classList.toggle('on', k === i); c.tabIndex = k === i ? 0 : -1; c.setAttribute('aria-hidden', k !== i); });
+        caps.forEach((c, k) => c.classList.toggle('on', k === i));
+        no.textContent = String(i + 1).padStart(2, '0');
       }
-      tabs.forEach((el, k) => el.style.setProperty('--fill', k < i ? 1 : k === i ? local : 0));
-      if (!reduceMotion) {
-        phone.style.setProperty('--ry', ((local - .5) * -14).toFixed(2) + 'deg');
-        phone.style.setProperty('--rx', ((.5 - Math.abs(local - .5)) * 4).toFixed(2) + 'deg');
-        phone.style.setProperty('--ty', ((.5 - local) * 18).toFixed(1) + 'px');
-      }
+      track.style.setProperty('--p', p);
     }
-    tabs.forEach((t, k) => t.addEventListener('click', () => {
-      const total = sc.offsetHeight - stage.offsetHeight, top = parseFloat(getComputedStyle(stage).top) || 0;
-      scrollTo({ top: sc.getBoundingClientRect().top + scrollY - top + total * (k + .4) / n, behavior: reduceMotion ? 'auto' : 'smooth' });
+    cards.forEach((c, k) => c.addEventListener('click', e => {
+      if (k === cur) return;
+      e.preventDefault();
+      const total = flow.offsetHeight - stage.offsetHeight, top = parseFloat(getComputedStyle(stage).top) || 0;
+      scrollTo({ top: flow.getBoundingClientRect().top + scrollY - top + total * k / (n - 1), behavior: reduceMotion ? 'auto' : 'smooth' });
     }));
     addEventListener('scroll', () => requestAnimationFrame(update), { passive: true });
     addEventListener('resize', update); update();
